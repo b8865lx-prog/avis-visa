@@ -1,6 +1,9 @@
 import csv,io,json,os,re,shutil,urllib.request,urllib.parse
 from html import escape as e
 from datetime import date
+import base64
+CSS=open('assets/style.css',encoding='utf-8').read();JS=open('assets/app.js',encoding='utf-8').read()
+ICON='data:image/png;base64,'+base64.b64encode(open('assets/logo-sm.png','rb').read()).decode()
 C=json.load(open('config.json'));D='https://'+C['domain'];WA=C['wa']
 JENIS=['Liburan','Bisnis','Pelajar','Kerja','Kunjungan keluarga']
 def rows(n):
@@ -35,6 +38,12 @@ HEADER='<header><div class="w hd"><a class="brand" href="/"><img src="/assets/lo
 FOOTER='<footer><div class="w"><div class="fgd"><div><div class="brand"><img src="/assets/logo-icon.png" alt="" width="44" height="44">AVis</div><p>Universal Visa Solution. Your Visa Personal Assistant: layanan asisten pribadi profesional untuk kebutuhan visa luar negeri Anda.</p></div><div><h4>Kantor dan kontak</h4><p>Jalan Merpati Raya, BFF Square No.34-A, Sawah Lama, Ciputat, Tangerang Selatan, Banten</p><a href="%s">WhatsApp %s</a><a href="%s">Instagram @avis_visasolution</a></div><div><h4>Visa populer</h4>%s</div></div><p class="dis">AVis adalah jasa pendampingan pengurusan visa swasta, bukan instansi pemerintah atau kedutaan. Keputusan penerbitan visa sepenuhnya wewenang kedutaan negara tujuan. AVis tidak melayani visa umroh dan haji.</p><p class="dis">&copy; %d AVis</p></div></footer>'%(wa('Halo AVis, saya mau konsultasi visa.'),C['wa_display'],C['instagram'],''.join('<a href="/visa/%s/">%s</a>'%(n['slug'],e(n['nama'])) for n in N[:6]),date.today().year)
 FAB='<a class="fab" href="%s" target="_blank" rel="noopener" aria-label="Chat WhatsApp"><svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg></a>'%wa('Halo AVis, saya mau konsultasi visa.')
 def page(path,title,desc,body,extra=''):
+    h=_page(path,title,desc,body,extra)
+    h=h.replace('<link rel="stylesheet" href="/assets/style.css">','<style>'+CSS+'</style>').replace('<script src="/assets/app.js" defer></script>','<script>'+JS+'</script>').replace('/assets/logo-icon.png',ICON).replace('<meta charset="utf-8">','<meta charset="utf-8"><!-- avis-build:v3-inline -->',1)
+    if path.startswith('/404'): return h
+    pre='./' if path=='/' else '../../'
+    return re.sub(r'(href|src)="/(?!/)',lambda m:m.group(1)+'="'+pre,h)
+def _page(path,title,desc,body,extra=''):
     return '<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>%s</title><meta name="description" content="%s"><link rel="canonical" href="%s%s"><meta property="og:title" content="%s"><meta property="og:description" content="%s"><meta property="og:type" content="website"><meta property="og:url" content="%s%s"><meta property="og:image" content="%s/assets/logo.png"><meta name="theme-color" content="#04a0b5"><link rel="icon" href="/assets/favicon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/style.css">%s</head><body>%s%s%s%s<script>const WA="%s"</script><script src="/assets/app.js" defer></script></body></html>'%(e(title),e(desc),D,path,e(title),e(desc),D,path,D,extra,HEADER,body,FOOTER,FAB,WA)
 def w(p,c):
     os.makedirs(os.path.dirname('dist/'+p) or 'dist',exist_ok=True);open('dist/'+p,'w',encoding='utf-8').write(c)
