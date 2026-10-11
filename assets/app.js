@@ -1,0 +1,16 @@
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const hd=$('header');addEventListener('scroll',()=>hd.classList.toggle('s',scrollY>20),{passive:true});
+$('.mn').onclick=()=>$('nav').classList.toggle('o');$$('nav a').forEach(a=>a.onclick=()=>$('nav').classList.remove('o'));
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.2});
+$$('.rv').forEach(x=>io.observe(x));
+$$('form[data-wa]').forEach(f=>f.onsubmit=e=>{e.preventDefault();
+ const l=[...new FormData(f)].filter(([k,v])=>v.trim()).map(([k,v])=>k+': '+v);
+ open('https://wa.me/'+WA+'?text='+encodeURIComponent('Halo AVis, saya mau konsultasi visa.\n'+l.join('\n')),'_blank')});
+$$('.loop').forEach(b=>{const t=b.firstElementChild;t.innerHTML+=t.innerHTML;
+ let x=0,hold=false,drag=false,sx=0,mv=0;const h=()=>t.scrollWidth/2,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ (function f(){if(!hold&&!drag&&!rm)x-=.5;if(x<-h())x+=h();if(x>0)x-=h();t.style.transform='translateX('+x+'px)';requestAnimationFrame(f)})();
+ b.addEventListener('pointerdown',e=>{drag=true;mv=0;sx=e.clientX-x});
+ addEventListener('pointermove',e=>{if(drag){mv=Math.abs(e.clientX-x-sx);x=e.clientX-sx}});
+ addEventListener('pointerup',()=>drag=false);
+ b.addEventListener('click',e=>{if(mv>8){e.preventDefault();mv=0}},true);
+ b.onmouseenter=()=>hold=true;b.onmouseleave=()=>hold=false});
