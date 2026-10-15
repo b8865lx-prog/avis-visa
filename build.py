@@ -5,7 +5,7 @@ import base64
 CSS=open('assets/style.css',encoding='utf-8').read();JS=open('assets/app.js',encoding='utf-8').read()
 ICON='data:image/png;base64,'+base64.b64encode(open('assets/logo-sm.png','rb').read()).decode()
 C=json.load(open('config.json'));D='https://'+C['domain'];WA=C['wa']
-JENIS=['Liburan','Bisnis','Pelajar','Kerja','Kunjungan keluarga']
+JENIS=['Liburan','Bisnis','Pelajar','Kerja (Khusus Australia/WHV)','Kunjungan keluarga']
 def rows(n):
     u=C['sheets'].get(n,'')
     try: t=urllib.request.urlopen(u,timeout=20).read().decode('utf-8') if u else open('data/%s.csv'%n,encoding='utf-8').read()
