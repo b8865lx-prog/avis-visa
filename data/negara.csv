@@ -1,11 +1,10 @@
 slug,nama,kode,jenis,estimasi,badge
-jepang,Jepang,jp,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,,Paling dicari
-korea-selatan,Korea Selatan,kr,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,,
-schengen,Schengen (Eropa),eu,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,7-14 hari kerja setelah berkas lengkap (tergantung slot biometrik),Paling dicari
+china,China,cn,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,3-7 hari kerja setelah berkas lengkap,
 australia,Australia,au,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,3-7 hari kerja setelah berkas lengkap,
+new-zealand,New Zealand,nz,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,3-7 hari kerja setelah berkas lengkap,
+canada,Canada,ca,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,3-7 hari kerja setelah berkas lengkap,
+schengen,Schengen (Eropa),eu,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,7-14 hari kerja setelah berkas lengkap (tergantung slot biometrik),Paling dicari
+korea-selatan,Korea Selatan,kr,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,,
+jepang,Jepang,jp,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,,Paling dicari
 amerika-serikat,Amerika Serikat,us,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,,
 inggris,Inggris,gb,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,,
-china,China,cn,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,3-7 hari kerja setelah berkas lengkap,
-taiwan,Taiwan,tw,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,,
-singapura,Singapura,sg,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,,
-turki,Turki,tr,Liburan|Bisnis|Pelajar|Kerja|Kunjungan keluarga,,
