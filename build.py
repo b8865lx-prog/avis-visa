@@ -30,7 +30,7 @@ def art(s):
     return '<svg viewBox="0 0 200 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="240" fill="%s"/><g fill="#0b4a6f">%s</g><rect y="200" width="200" height="40" fill="#4caf50"/></svg>'%(sky,p)
 def flag(k,w=80): return 'https://flagcdn.com/w%d/%s.png'%(w,k)
 N=rows('negara');F=rows('faq');T=rows('testimoni');slugs={n['kode']:n['slug'] for n in N}
-WORLD=[('jp','Jepang'),('kr','Korea Selatan'),('eu','Schengen'),('au','Australia'),('us','Amerika Serikat'),('gb','Inggris'),('cn','China'),('tw','Taiwan'),('sg','Singapura'),('tr','Turki'),('de','Jerman'),('fr','Prancis'),('it','Italia'),('es','Spanyol'),('nl','Belanda'),('ch','Swiss'),('nz','Selandia Baru'),('ca','Kanada'),('hk','Hong Kong'),('my','Malaysia'),('th','Thailand'),('vn','Vietnam'),('in','India'),('ae','Uni Emirat Arab'),('eg','Mesir'),('za','Afrika Selatan'),('br','Brasil'),('ar','Argentina'),('mx','Meksiko'),('pt','Portugal'),('gr','Yunani'),('ru','Rusia')]
+WORLD=[('jp','Jepang'),('kr','Korea Selatan'),('eu','Schengen'),('au','Australia'),('us','Amerika Serikat'),('gb','Inggris'),('cn','China'),('de','Jerman'),('fr','Prancis'),('it','Italia'),('es','Spanyol'),('nl','Belanda'),('ch','Swiss'),('nz','Selandia Baru'),('ca','Kanada'),('pt','Portugal'),('gr','Yunani'),('hu','Hungaria'),('at','Austria'),('gr','Yunani'),('pl', 'Polandia'),('lt','Lithuania'),('no','Norwegia'),('be','Belgia'),('se','Swedia')]
 def chip(k,nm):
     h='/visa/%s/'%slugs[k] if k in slugs else wa('Halo AVis, saya mau tanya visa ke %s.'%nm)
     return '<a class="f1" href="%s" aria-label="Visa"><img src="%s" alt="Bendera %s" loading="lazy" width="58" height="58"></a>'%(h,flag(k),e(nm))
