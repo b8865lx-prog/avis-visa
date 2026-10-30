@@ -93,12 +93,201 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.15}.brand,.stats b,
 .whfin{background:linear-gradient(135deg,#0b4a6f,#04a0b5)!important;color:#fff;text-align:center}.whfin h2{color:#fff;font-size:clamp(26px,6.5vw,38px);margin-bottom:10px}.whfin p{max-width:560px;margin:8px auto}.whfin .whfp{font-weight:800;font-size:18px}.whfin .btn{margin:14px auto 0}.whfin .note{color:#d3edf3}.whfin .whq{margin:12px auto}
 @media(min-width:800px){.whg{grid-template-columns:1.15fr .85fr;gap:48px}.whv{height:380px}.whcards{grid-template-columns:repeat(3,1fr)}.whcards.whc4{grid-template-columns:repeat(4,1fr)}.hero.wh .tag{font-size:15px}}
 
-/* ===== Pop up promo main page ===== */
-.pm{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:#0b2a3acc}.pm.o{display:flex}
-.pmc{position:relative;width:100%;max-width:400px;max-height:calc(100vh - 40px);overflow:auto;background:#fff;border-radius:26px;box-shadow:0 30px 80px #0007;animation:pmi .45s cubic-bezier(.2,1.2,.4,1)}@keyframes pmi{from{opacity:0;transform:translateY(24px) scale(.94)}}
-.pmh{background:linear-gradient(135deg,#0b4a6f,#04a0b5);color:#fff;padding:28px 22px 20px}.pmh h2{color:#fff;font-size:22px;margin-top:10px;padding-right:20px}.pmb2{display:inline-block;background:var(--green);color:#fff;font-weight:800;font-size:12px;letter-spacing:.08em;padding:3px 12px;border-radius:99px}
-.pmx{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:0;background:#ffffff33;color:#fff;font-size:26px;line-height:1;cursor:pointer}
-.pmbd{padding:20px 22px 22px;text-align:center}.pmp s{color:var(--mut);font-size:17px}.pmp b{font-size:38px;color:var(--navy);letter-spacing:-.02em;margin-left:8px}.pms{color:var(--mut);font-size:14px;margin-top:2px}
-.pmq{display:inline-block;margin:14px 0;background:#fff6dc;color:#7a5a00;border:1px solid #f1dc9c;border-radius:12px;padding:7px 14px;font-weight:700;font-size:14px}
-.pmb{display:flex;width:100%;padding:15px 24px;font-size:16px}.pml{background:none;border:0;color:var(--mut);font:600 14px inherit;font-family:inherit;margin-top:12px;padding:8px 14px;cursor:pointer;text-decoration:underline}.pmd{font-size:12px;color:var(--mut);margin-top:6px}
-.hero.wh .btn,.whfin .btn,.whctr .btn,.pmb{text-align:center}
+/* ==========================================
+   PROMO POPUP MODAL ENHANCEMENTS
+   ========================================== */
+
+/* Overlay Background */
+.pm {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(11, 24, 40, 0.75); /* Overlay gelap dengan kontras tinggi */
+  backdrop-filter: blur(6px); /* Efek glassmorphism */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  padding: 1rem;
+}
+
+.pm:not([aria-hidden="true"]) {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Card Container */
+.pmc {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pm:not([aria-hidden="true"]) .pmc {
+  transform: translateY(0) scale(1);
+}
+
+/* Tombol Close (X) */
+.pmx {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.pmx:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.08);
+}
+
+/* Header Modal (Gradient Menarik) */
+.pmh {
+  background: linear-gradient(135deg, #0b4a6f 0%, #04a0b5 100%);
+  padding: 28px 24px 20px;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Badge Early Bird */
+.pmb2 {
+  display: inline-block;
+  background: #f5c24b;
+  color: #0b4a6f;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Judul Modal */
+.pmh h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Content Body Modal */
+.pmbd {
+  padding: 24px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+/* Komponen Harga (Mewah & Kontras) */
+.pmp {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pmp s {
+  color: #8c98a4; /* Harga dicoret jelas */
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.pmp b {
+  color: #d9381e; /* Merah mencolok untuk harga promo */
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* Teks Keterangan & Kuota (Dibuat Jelas, Tidak Samar) */
+.pms {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: #1e293b; /* Warna teks gelap tegas (Slate 800) */
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.pmq {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #04a0b5; /* Hijau/Toska Accent AVis */
+  background: #f0fdfa;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 20px;
+  border: 1px solid #ccfbf1;
+}
+
+/* Tombol CTA Utama */
+.pmbd .btn.pmb {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #04a0b5 0%, #037f90 100%);
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(4, 160, 181, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.pmbd .btn.pmb:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(4, 160, 181, 0.45);
+}
+
+/* Tombol "Nanti Saja" */
+.pml {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  transition: color 0.2s ease;
+}
+
+.pml:hover {
+  color: #0f172a;
+  text-decoration: underline;
+}
+
+/* Teks Disclaimer di Bawah */
+.pmd {
+  font-size: 0.75rem;
+  color: #64748b; /* Keterangan disclaimer tidak mengganggu tapi tetap terbaca */
+  margin-top: 14px;
+  margin-bottom: 0;
+  line-height: 1.35;
+}
