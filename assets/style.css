@@ -212,7 +212,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.15}.brand,.stats b,
 }
 
 .pmp s {
-  color: #8c98a4; /* Harga dicoret jelas */
+  color: #64748b; /* Harga dicoret jelas (sebelumnya #8c98a4) */
   font-size: 1rem;
   font-weight: 500;
 }
@@ -236,7 +236,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.15}.brand,.stats b,
 .pmq {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #04a0b5; /* Hijau/Toska Accent AVis */
+  color: #037f90; /* Toska AVis, digelapkan biar terbaca (sebelumnya #04a0b5) */
   background: #f0fdfa;
   padding: 6px 12px;
   border-radius: 8px;
@@ -253,7 +253,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.15}.brand,.stats b,
   font-size: 1rem;
   font-weight: 700;
   color: #ffffff;
-  background: linear-gradient(135deg, #04a0b5 0%, #037f90 100%);
+  background: linear-gradient(135deg, #03889b 0%, #037f90 100%); /* sebelumnya mulai #04a0b5 */
   border-radius: 10px;
   text-decoration: none;
   box-shadow: 0 4px 14px rgba(4, 160, 181, 0.35);
@@ -291,3 +291,15 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.15}.brand,.stats b,
   margin-bottom: 0;
   line-height: 1.35;
 }
+
+.hero.wh .btn,.whfin .btn,.whctr .btn{text-align:center}
+
+/* ===== Titik masuk ke program WHV dari situs utama ===== */
+/* badge "Promo" di header: emas + navy, sama seperti badge Early Bird di popup */
+nav .nvw i{font-style:normal;background:#f5c24b;color:#0b4a6f;font-size:10px;font-weight:800;letter-spacing:.04em;padding:2px 8px;border-radius:99px;margin-left:6px;vertical-align:middle}
+.wvs{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 14px;background:linear-gradient(90deg,#0b4a6f,#037f90);color:#fff;text-align:center;padding:12px 20px;font-size:14px;font-weight:600;line-height:1.4}
+.wvs b{color:#ffe08a;font-weight:800}.wvs u{font-weight:800;color:#fff;text-underline-offset:3px}.wvs:hover u{color:#ffe08a}
+.wvt{display:inline-block;margin:-4px 0 12px;font-size:13px;font-weight:800;color:#2b7a3b}
+.wvb{display:grid;gap:14px;align-items:center;background:#fff;border-radius:20px;padding:18px 20px;margin:20px 0;border-left:5px solid var(--green);box-shadow:0 10px 30px #0b4a6f1a}
+.wvb b{color:var(--navy);font-size:17px;line-height:1.3;display:block}.wvb p{color:#475569;font-size:14px;margin-top:4px}.pg .wvb .btn{margin:0;justify-self:start}
+@media(min-width:800px){.wvb{grid-template-columns:1fr auto}.wvb .btn{justify-self:end}}

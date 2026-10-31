@@ -16,7 +16,46 @@ def kuota_text(C):
     return 'Kuota terbatas: maksimal %d peserta per periode, agar kualitas pendampingan tetap terjaga.' % C.get('whv_kuota', 30)
 
 
+def aktif(C):
+    """Saklar: config.json -> "whv_aktif": false mematikan pop up + semua link/banner WHV di situs utama (sub page tetap ada)."""
+    return bool(C.get('whv_aktif', True))
+
+
+def _u(medium):
+    return '%s?utm_source=website&amp;utm_medium=%s&amp;utm_campaign=whv_2026' % (SLUG, medium)
+
+
+def nav_link(C):
+    return '<a class="nvw" href="%s">Program WHV<i>Promo</i></a>' % _u('header') if aktif(C) else ''
+
+
+def strip(C):
+    if not aktif(C):
+        return ''
+    return ('<a class="wvs" href="%s"><span>Program Pendampingan Pra-ballot WHV 2026 Australia &mdash; '
+            'early bird <b>Rp999.000</b></span><u>Lihat program &rsaquo;</u></a>') % _u('strip')
+
+
+def card_link(C):
+    return '<a class="wvt" href="%s">Program WHV 2026 &rsaquo;</a>' % _u('card') if aktif(C) else ''
+
+
+def banner(C):
+    if not aktif(C):
+        return ''
+    return ('<div class="wvb"><div><b>Program Pendampingan Pra-ballot WHV 2026 Australia</b>'
+            '<p>Dokumen dibantu, registrasi didampingi. Early bird Rp999.000, termasuk biaya registrasi ballot resmi. '
+            'Kuota terbatas %d peserta per periode.</p></div>'
+            '<a class="btn" href="%s">Lihat Program</a></div>') % (C.get('whv_kuota', 30), _u('banner'))
+
+
+def footer_link(C):
+    return '<a href="%s">Program WHV 2026</a>' % _u('footer') if aktif(C) else ''
+
+
 def promo(C):
+    if not aktif(C):
+        return ''
     k = C.get('whv_kuota', 30)
     return ('<div class="pm" id="promo" role="dialog" aria-modal="true" aria-labelledby="pmt" aria-hidden="true">'
             '<div class="pmc"><button class="pmx" type="button" data-x aria-label="Tutup">&times;</button>'
